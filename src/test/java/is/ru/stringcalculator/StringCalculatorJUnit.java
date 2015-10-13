@@ -52,6 +52,13 @@ public class StringCalculatorJUnit {
 	}
 
 	@Test
+	public void TestAddWithPercentAsDelimiter() {
+		int returnValue = calculator.Add("//%\n1%2");
+		assertEquals(3, returnValue);
+		System.out.println("TestAddWithPercentAsDelimiter passed!");
+	}
+
+	@Test
 	public void TestAddWithNegativeNumbers() {
 		String message = "";
 		try {
@@ -68,5 +75,12 @@ public class StringCalculatorJUnit {
 		int returnValue = calculator.Add("1001,2");
 		assertEquals(2, returnValue);
 		System.out.println("TestAddWithBiggerNumbersThan1000 passed!");
+	}
+
+	@Test
+	public void TestAddWithDelimiterOfAnyLength() {
+		int returnValue = calculator.Add("//[***]\n1***2***3");
+		assertEquals(6, returnValue);
+		System.out.println("TestAddWithDelimiterOfAnyLength passed!");
 	}
 }
