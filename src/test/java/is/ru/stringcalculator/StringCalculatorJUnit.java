@@ -104,4 +104,18 @@ public class StringCalculatorJUnit {
 		assertEquals(10, returnValue);
 		System.out.println("TestAddWithThreeDifferentDelimiters passed!");
 	}
+
+	@Test
+	public void TestWithMultipleDelimitersOfAnyLength() {
+		int returnValue = calculator.Add("//[**][%%]\n1**2%%3");
+		assertEquals(6, returnValue);
+		System.out.println("TestWithMultipleDelimitersOfAnyLength passed!");
+	}
+
+	@Test
+	public void TestWithMultipleDelimitersOfDifferentLengths() {
+		int returnValue = calculator.Add("//[**][%%%%][&]\n1**2%%%%3&4");
+		assertEquals(10, returnValue);
+		System.out.println("TestWithMultipleDelimitersOfDifferentLengths passed!");
+	}
 }
