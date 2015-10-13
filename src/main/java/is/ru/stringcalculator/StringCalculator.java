@@ -33,7 +33,9 @@ public class StringCalculator {
 			int sum = 0;
 			String[] numberArray = numbers.split(optionalDelimiter);
 			for(String number : numberArray) {
-				sum += toInt(number);
+				if(toInt(number) <= 1000) {
+					sum += toInt(number);
+				}
 			}
 			return sum;
 		}

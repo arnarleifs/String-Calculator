@@ -62,4 +62,11 @@ public class StringCalculatorJUnit {
 		assertEquals(message, "Negatives not allowed: -1,-3");
 		System.out.println("TestAddWithNegativeNumbers passed!");
 	}
+
+	@Test
+	public void TestAddWithBiggerNumbersThan1000() {
+		int returnValue = calculator.Add("1001,2");
+		assertEquals(2, returnValue);
+		System.out.println("TestAddWithBiggerNumbersThan1000 passed!");
+	}
 }
