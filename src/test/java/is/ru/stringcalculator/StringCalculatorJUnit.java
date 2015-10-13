@@ -83,4 +83,11 @@ public class StringCalculatorJUnit {
 		assertEquals(6, returnValue);
 		System.out.println("TestAddWithDelimiterOfAnyLength passed!");
 	}
+
+	@Test
+	public void TestAddWithDelimiterOfLongerLength() {
+		int returnValue = calculator.Add("//[;;;;;;;;;;]\n1;;;;;;;;;;2;;;;;;;;;;3");
+		assertEquals(6, returnValue);
+		System.out.println("TestAddWithDelimiterOfLongerLength passed!");
+	}
 }
