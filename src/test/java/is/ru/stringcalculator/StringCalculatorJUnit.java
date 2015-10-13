@@ -14,4 +14,11 @@ public class StringCalculatorJUnit {
 		assertEquals(0, returnValue);
 		System.out.println("TestAddWithZeroNumber passed!");
 	}
+
+	@Test
+	public void TestAddWithOneNumber() {
+		int returnValue = calculator.Add("1");
+		assertEquals(1, returnValue);
+		System.out.println("TestAddWithOneNumber passed!");
+	}
 }
