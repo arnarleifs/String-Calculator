@@ -1,8 +1,8 @@
 package is.ru.stringcalculator;
 import java.lang.*;
 import java.util.InputMismatchException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class StringCalculator {
 	public StringCalculator() {
@@ -20,9 +20,34 @@ public class StringCalculator {
 	}
 
 	private static String[] getDelimiterFromPattern(String numbers) {
-		String patternString = "//\\[?([^\\]]*)\\]?\n(.*)";
-		String[] groups = {numbers.replaceAll(patternString, "$1"), numbers.replaceAll(patternString, "$2")};
-		return groups;
+		// Queue implementation
+		int index = 0;
+		Queue<Character> queue = new LinkedList<Character>();
+		String delimiter = "";
+		for(int i = 0; i < numbers.length(); i++) {
+			if(numbers.charAt(i) == '\n') {
+				index = i;
+				break;
+			}
+			if(numbers.charAt(i) == '[') {
+				queue.add(numbers.charAt(i));
+			} else if(numbers.charAt(i) == ']') {
+				queue.add(numbers.charAt(i));
+				int size = queue.size();
+				for(int j = 0; j < size; j++) {
+					delimiter += Character.toString(queue.remove());
+				}
+				delimiter += "|";
+			} else if(!queue.isEmpty()) {
+				queue.add(numbers.charAt(i));
+			} else if(queue.isEmpty() && numbers.charAt(i) != '/') {
+				delimiter = Character.toString(numbers.charAt(i));
+				index = i + 1;
+				break;
+			}
+		}
+		String[] delimiterArray = {delimiter.substring(0, delimiter.length()), numbers.substring(index)};
+		return delimiterArray;
 	}
 
 	public static int Add(String numbers) {
@@ -35,9 +60,6 @@ public class StringCalculator {
 			String optionalDelimiter = ",|\n";
 			if(numbers.charAt(0) == '/') {
 				String[] delimiter = getDelimiterFromPattern(numbers);
-				if(delimiter[0].length() > 1) {
-					delimiter[0] = "[" + delimiter[0] + "]";
-				}
 				optionalDelimiter += "|" + delimiter[0];
 				numbers = delimiter[1];
 			}
