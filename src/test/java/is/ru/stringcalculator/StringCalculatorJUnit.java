@@ -35,4 +35,11 @@ public class StringCalculatorJUnit {
 		assertEquals(6, returnValue);
 		System.out.println("TestAddWithUnknownNumbers passed!");
 	}
+
+	@Test
+	public void TestAddWithNullAsDelimiter() {
+		int returnValue = calculator.Add("1\n2,3");
+		assertEquals(6, returnValue);
+		System.out.println("TestAddWithNullAsDelimiter passed!");
+	}
 }

@@ -11,7 +11,7 @@ public class StringCalculator {
 			return 0;	
 		} else {
 			int sum = 0;
-			String[] numberArray = numbers.split(",");
+			String[] numberArray = numbers.split(",|\n");
 			for(int i = 0; i < numberArray.length; i++) {
 				sum += toInt(numberArray[i]);
 			}
