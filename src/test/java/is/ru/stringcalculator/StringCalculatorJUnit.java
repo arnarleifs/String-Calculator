@@ -42,4 +42,11 @@ public class StringCalculatorJUnit {
 		assertEquals(6, returnValue);
 		System.out.println("TestAddWithNullAsDelimiter passed!");
 	}
+
+	@Test
+	public void TestAddWithDifferentDelimiter() {
+		int returnValue = calculator.Add("//;\n1;2");
+		assertEquals(3, returnValue);
+		System.out.println("TestAddWithDifferentDelimiter passed!");
+	}
 }
