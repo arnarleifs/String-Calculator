@@ -21,4 +21,11 @@ public class StringCalculatorJUnit {
 		assertEquals(1, returnValue);
 		System.out.println("TestAddWithOneNumber passed!");
 	}
+
+	@Test
+	public void TestAddWithTwoNumbers() {
+		int returnValue = calculator.Add("1,2");
+		assertEquals(3, returnValue);
+		System.out.println("TestAddWithTwoNumbers passed!");
+	}
 }
