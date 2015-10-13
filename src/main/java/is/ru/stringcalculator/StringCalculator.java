@@ -10,12 +10,12 @@ public class StringCalculator {
 		if(numbers.isEmpty()) {
 			return 0;	
 		} else {
+			int sum = 0;
 			String[] numberArray = numbers.split(",");
-			if(numberArray.length > 1) {
-				return toInt(numberArray[0]) + toInt(numberArray[1]);
-			} else {
-				return toInt(numberArray[0]);
+			for(int i = 0; i < numberArray.length; i++) {
+				sum += toInt(numberArray[i]);
 			}
+			return sum;
 		}
 	}
 

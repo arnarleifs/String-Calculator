@@ -28,4 +28,11 @@ public class StringCalculatorJUnit {
 		assertEquals(3, returnValue);
 		System.out.println("TestAddWithTwoNumbers passed!");
 	}
+
+	@Test
+	public void TestAddWithUnknownNumbers() {
+		int returnValue = calculator.Add("1,2,3");
+		assertEquals(6, returnValue);
+		System.out.println("TestAddWithUnknownNumbers passed!");
+	}
 }
